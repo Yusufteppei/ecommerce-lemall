@@ -26,7 +26,7 @@ class CartItemSerializer(ModelSerializer):
 class CartSerializer(ModelSerializer):
     items = CartItemSerializer(many=True)
     owner = serializers.StringRelatedField()
-
+     
     class Meta:
         model = Cart
         fields = '__all__'
