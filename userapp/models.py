@@ -56,7 +56,7 @@ class CartItem(models.Model):
         self.delete()
 
     def __str__(self):
-        return self.product.title
+        return self.product
 
 
 class Cart(models.Model):
