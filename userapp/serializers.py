@@ -1,6 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 from .models import Wishlist, WishlistItem, Cart, CartItem, Order, Profile
 from rest_framework import serializers
+from warehouse.models import Product
+from warehouse.serializers import ProductSerializer
 
 class WishlistSerializer(ModelSerializer):
     class Meta:
@@ -15,7 +17,7 @@ class WishlistItemSerializer(ModelSerializer):
 
 
 class CartItemSerializer(ModelSerializer):
-    product = serializers.StringRelatedField()
+    product = ProductSerializer()
     owner = serializers.StringRelatedField()
     class Meta:
         model = CartItem
