@@ -1,6 +1,6 @@
 from django.db import models
 from authentication.models import UserAccount
-from stores.models import Product
+from warehouse.models import Product
 from address.models import Address
 from django.contrib.auth import get_user_model
 
