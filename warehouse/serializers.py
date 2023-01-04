@@ -10,7 +10,7 @@ class CategorySerializer(HyperlinkedModelSerializer):
 
 
 class ProductSerializer(ModelSerializer):
-    product = StoreProductSerializer()
+    #product = StoreProductSerializer()
     class Meta:
         model = Product
         fields = '__all__'
