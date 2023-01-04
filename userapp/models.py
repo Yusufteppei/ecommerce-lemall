@@ -38,7 +38,7 @@ class Wishlist(models.Model):
 
 class CartItem(models.Model):
     owner = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
     
