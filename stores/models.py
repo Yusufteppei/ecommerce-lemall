@@ -1,5 +1,5 @@
 from django.db import models
-from address.models import Locality
+from address.models import Locality, Country
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -28,8 +28,11 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+
 class Store(models.Model):
     name = models.CharField(max_length=64, unique=True)
+    international = models.BooleanField(default=False)
+    country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField(max_length=256)
 
@@ -39,7 +42,7 @@ class Store(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=64)
-    #phone = models.PhoneNumberField()
+    phone = models.CharField(max_length=16)
     email = models.EmailField()
     address = models.TextField(max_length=256)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -67,7 +70,7 @@ class Product(models.Model):
     location = models.ForeignKey(Locality, on_delete=models.CASCADE, null=True) #FIX IN PRODUCTION
     #store
 
-    selling_price = models.IntegerField(verbose_name='Price(In Naira', default=0)
+    selling_price = models.IntegerField(verbose_name='Price(In Naira)', default=0)
     cost_price = models.IntegerField(blank=True, null=True)
     images = models.ManyToManyField(Image)
 
