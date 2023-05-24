@@ -29,8 +29,8 @@ class ImageSerializer(ModelSerializer):
 class ProductSerializer(ModelSerializer):
     #store = StoreSerializer()
     images = ImageSerializer(many=True)
-    location = serializers.StringRelatedField()
-    category = serializers.StringRelatedField()
+    #location = serializers.StringRelatedField()
+    #category = serializers.StringRelatedField()
     
     def create(self, validated_data):
         print("Creating store product model via API")
@@ -46,8 +46,8 @@ class ProductSerializer(ModelSerializer):
         
     class Meta:
         model = Product
-        #fields = ('title', 'quantity', 'price', 'active', 'category', 'location')
-        fields = '__all__'
+        fields = ('title', 'quantity', 'selling_price', 'cost_price', 'images')
+        #fields = '__all__'
         #exclude = ('store', )
 
 

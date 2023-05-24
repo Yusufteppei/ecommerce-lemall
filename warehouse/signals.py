@@ -7,6 +7,16 @@ from warehouse.models import Product as WarehouseProduct
 @receiver(post_save, sender=StoreProduct)
 def upload_to_warehouse(sender, instance, created, **kwargs):
     print("Stores signal Running")
+
+    if created:
+        WarehouseProduct.objects.create(product=instance, active=instance.active)
+
+    else:
+        w_prod = WarehouseProduct.objects.get(product=instance)
+        w_prod.active = instance.active
+        w_prod.save()
+
+    """
     #   AFTER SAVING, IF THE STORE PRODUCT IS ACTIVE, IT WILL BE ACCEPTED INTO THE WAREHOUSE
     if instance.active:
         print(f"{instance} is active")
@@ -29,3 +39,5 @@ def upload_to_warehouse(sender, instance, created, **kwargs):
         w_prod = WarehouseProduct.objects.get(product=instance)
         w_prod.delete()
         print(f"{instance} has been deleted from warehouse")
+        
+    """

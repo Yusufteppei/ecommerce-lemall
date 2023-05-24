@@ -21,3 +21,6 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.product.title}' 
+
+    def sell(self):
+        self.product.sell()
