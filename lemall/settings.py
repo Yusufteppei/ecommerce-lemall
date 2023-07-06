@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-=sq=t=$(e!n6c9@+rzjrk0vw97z6gbr)f$&5k$#+&64$qe2&3_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.77', 'localhost', '172.105.15.154', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://*']
 
@@ -207,10 +207,10 @@ EMAIL_USE_TLS = True
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-LINODE_BUCKET=os.environ.get('LINODE_BUCKET', 'lemall-images')
-LINODE_BUCKET_REGION=os.environ.get('LINODE_BUCKET_REGION',  'us-east-1')
-LINODE_BUCKET_ACCESS_KEY=os.environ.get('LINODE_BUCKET_ACCESS_KEY', 'Y55VPZU8WCERT7CC1DDR') 
-LINODE_BUCKET_SECRET_KEY=os.environ.get('LINODE_BUCKET_SECRET_KEY', 'yTsXilLB1oEMtoX1c5ETDoapwGR3CRXDGoZrTam1') 
+LINODE_BUCKET=os.environ.get('LINODE_BUCKET')
+LINODE_BUCKET_REGION=os.environ.get('LINODE_BUCKET_REGION')
+LINODE_BUCKET_ACCESS_KEY=os.environ.get('LINODE_BUCKET_ACCESS_KEY') 
+LINODE_BUCKET_SECRET_KEY=os.environ.get('LINODE_BUCKET_SECRET_KEY') 
 
 
 AWS_S3_ENDPOINT_URL=f'https://{LINODE_BUCKET_REGION}.linodeobjects.com'
